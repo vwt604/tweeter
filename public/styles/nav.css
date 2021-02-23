@@ -1,0 +1,37 @@
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-top: 1.5em;
+  padding-bottom: 0.5em;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  color: #FFFFFF;
+  height: 100px;
+  width: 100%;
+  background-color: cadetblue;
+}
+
+.nav span {
+  font-family: 'Bungee', cursive;
+}
+
+.left-side {
+  display: flex;
+}
+
+.right-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  font-size: 16px;
+  color: #FFFFFF;
+}
+
+.nav-arrow {
+  display: flex;
+  justify-content: center;
+  color: #e50000;
+  font-size: 20px;
+}

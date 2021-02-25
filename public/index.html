@@ -20,23 +20,26 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
 
     <!-- External JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script> -->
 
     <!-- App JS -->
     <script defer src="/scripts/client.js" type="text/javascript"></script>
     <script defer src="/scripts/composer-char-counter.js" type="text/javascript"></script>
+    
   </head>
 
   <body>
     <!-- Top nav bar (fixed) -->
     <nav class = "nav">
-      <div class ="left-side">
+      <div class ="nav-left">
         <div class="nav-logo">
           <span>tweeter</span>
         </div>
       </div>
 
-      <div class="right-side">
+      <div class="nav-right">
         <div class="nav-text">
           <strong>Write</strong> a new tweet 
         </div>
@@ -60,45 +63,21 @@
     <main class="container">
       <section class="new-tweet">
         <h2>Compose Tweet</h2>
-        <!-- <form method="POST" action="/tweets/"> -->
-          <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
+        <form method="POST" action="/tweets/">
+          <textarea name="text" type="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
           <div class="form-bottom">
-            <button type="submit">Tweet</button>
+            <button type="submit" class ="btn-submit">Tweet</button>
             <output name="counter" class="counter" for="tweet-text">140</output>
           </div>
+          <div id="warning-empty" class="warning" style="display:none">Oops, your tweet is empty</div>
+          <div id="warning-maximum" class="warning" style="display:none">Oops, your tweet is too long</div>
         </form>
       </section>
 
-      <section>
-        <article class="tweet">
-          <header>
-            <div class="left-side">
-              <img class="logo" src="https://i.imgur.com/73hZDYK.png">
-              <h2 class="full-name">Newton</h2>
-            </div>
-            <div class="right-side">
-              <h3 class="user-handle">@SirIsaac</h3>
-            </div>
-          </header>
-            <p class="content">Today is a great day, isn't it?</p>
-          <footer class="tweet-footer">
-            <div class="left-side">
-              <p class="date-stamp">10 days ago</p>
-            </div>
-            <div class="right-side">
-              <img class="icon" src='images/love.png'>
-              <img class="icon" src='images/retweet.png'>
-              <img class="icon" src='images/flag.png'>
-            </div>
-          </footer>
-        </article>
+      <section id="tweet-container">
+
       </section>
     </main>
     <footer></footer>
   </body>
 </html>
-
-<!-- Questions
-
-1. Best practice for margin/padding units (px or %)?
-2. Should i wrap all content?  -->

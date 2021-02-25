@@ -1,68 +1,11 @@
-// document.addEventListener("dblclick", (event) => {
-//   console.log(event);
-// });
-
-// document.addEventListener("input", (event) => {
-//   console.log('This is input');
-// });
-
-// document.addEventListener("mouseLeave", (event) => {
-//   console.log('This is mouseLeave');
-// });
-
-// document.addEventListener("select", (event) => {
-//   console.log('This is select');
-// });
-
-// document.addEventListener("blur", (event) => {
-//   console.log('This is blur');
-// });
-// document.addEventListener("exit", (event) => {
-//   console.log('This is exit');
-// });
-// document.addEventListener("focus", (event) => {
-//   console.log('This is mouseenter');
-// });
-// document.addEventListener("above", (event) => {
-//   console.log('This is above');
-// });
-// document.addEventListener("mouseover", (event) => {
-//   console.log('This is mouseover');
-// });
-// document.addEventListener("hover", (event) => {
-//   console.log('This is hover');
-// });
-
-
-//hard coded tweet data
-
-
-// const data = [
-//   {
-//     "user": {
-//       "name": "Newton",
-//       "avatars": "https://i.imgur.com/73hZDYK.png"
-//       ,
-//       "handle": "@SirIsaac"
-//     },
-//     "content": {
-//       "text": "If I have seen further it is by standing on the shoulders of giants"
-//     },
-//     "created_at": 1461116232227
-//   },
-//   {
-//     "user": {
-//       "name": "Descartes",
-//       "avatars": "https://i.imgur.com/nlhLi3I.png",
-//       "handle": "@rd" },
-//     "content": {
-//       "text": "Je pense , donc je suis"
-//     },
-//     "created_at": 1461113959088
-//   }
-// ]
-
-
+/* 
+TO DO: 
+[] Post request bad 
+[] Fix overflow textbox
+[] Style error messages
+[] reordertweets
+[] Fix tweet loading issues
+*/
 
 $(document).ready(function() {
   const renderTweets = function(tweets) {
@@ -106,29 +49,54 @@ $(document).ready(function() {
   
     return $tweet;
   }
-
+  
+  
+  //Form submission validation
   $('form').submit(function (event) {
     event.preventDefault();
+    let tweet = $("textarea").val();
+    if (!tweet.length) {
+      $("#warning-empty").slideToggle("fast");
+    } else if (tweet.length > 140) {
+      $("#warning-maximum").slideToggle("fast");
+    } else {
+      let tweetURL = $(this).serialize();
+      createNewTweet(tweetURL);
+    }
+  });
+
+
+  // ----- AJAX functions to GET and POST tweets ----- //
+
+
+  const loadTweets = function() {
+    console.log('loading the tweets')
+    $.ajax({
+      url: '/tweets',
+      method: "GET",  
+    })
+    .then((tweets)=>{
+      console.log(tweets);
+      renderTweets(tweets);
+    })
+  };
+  loadTweets();
+  
+  const createNewTweet = function(tweet) {
     const tweetData = $(this).serialize();
     $.ajax({
       url: '/tweets',
       method: "POST",
       data: tweetData
     })
-  });
+      .then(loadTweets())
+      .then(console.log(tweetData))
 
-  const loadTweets = function() {
-    $.ajax({
-      url: '/tweets',
-      method: "GET",  
-    })
-    .then((tweets)=>{
-      renderTweets(tweets);
-    })
-  };
-  loadTweets();
+  }
 
-}); 
+});  
+
+
 
 
 

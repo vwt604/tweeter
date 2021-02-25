@@ -1,27 +1,30 @@
 .nav {
-  height: 100px;
+  height: 80px;
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-end;
-  padding-top: 1.5em;
+  padding-top: 1.5em 1.5em 0.5em 1.5em;
   padding-bottom: 0.5em;
   padding-left: 1.5em;
   padding-right: 1.5em;
   color: #FFFFFF;
   background-color: #5f9ea0;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
 }
 
 .nav span {
   font-family: 'Bungee', cursive;
 }
 
-.left-side {
+.nav-left {
   display: flex;
 }
 
-.right-side {
+.nav-right {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;

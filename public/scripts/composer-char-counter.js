@@ -1,5 +1,3 @@
-console.log("LINKINNN PARKED")
-
 //runs a callback when the DOM is ready to be manipulated with jQuery.
 $(document).ready(function() {
 
@@ -26,11 +24,5 @@ $(document).ready(function() {
       counter.text(remaining).css({ color: "#545149"})
     }
   });
-
-  
-
-
-
-
 
 });

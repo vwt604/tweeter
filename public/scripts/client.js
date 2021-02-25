@@ -11,9 +11,9 @@ TO DO:
 [x] Fix auto reload positioning
 
 
-[] Fix overflow textbox
+[x] Fix overflow textbox
 [] Style error messages
-[] icons show only on hover
+[x] icons show only on hover
 */
 
 $(document).ready(function() {
@@ -63,8 +63,10 @@ $(document).ready(function() {
   
     return $tweet;
   }
+
   //sorry about this variable scoping..
   let tweetData;
+  
   //Form submission validation
   $('form').submit(function (event) {
     tweetData = $(this).serialize();
@@ -80,9 +82,7 @@ $(document).ready(function() {
     }
   });
 
-
   // ----- AJAX functions to GET and POST tweets ----- //
-
 
   const loadTweets = function() {
     $.ajax({
@@ -95,8 +95,6 @@ $(document).ready(function() {
   };
   loadTweets();
   
-  
-
   const createNewTweet = function() {
     $.ajax({
       url: '/tweets',

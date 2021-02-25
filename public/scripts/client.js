@@ -1,14 +1,19 @@
 /* 
 TO DO: 
-[] Fix post 400 request bad 
-[] Refetch tweets on submission
+[x] Fix post 400 request bad 
+[x] Refetch tweets on submission
 [x] Reorder tweets functionality
 [x] XSS prevention
+[] Write a new tweet button
+
+
 [] Fix timestamp 
+[x] Fix auto reload positioning
 
 
 [] Fix overflow textbox
 [] Style error messages
+[] icons show only on hover
 */
 
 $(document).ready(function() {
@@ -63,7 +68,6 @@ $(document).ready(function() {
   //Form submission validation
   $('form').submit(function (event) {
     tweetData = $(this).serialize();
-    console.log(tweetData);
     event.preventDefault();
     let tweet = $("textarea").val();
     if (!tweet.length) {
@@ -100,7 +104,7 @@ $(document).ready(function() {
       data: tweetData, 
       success: function() {
         loadTweets()
-        // console.log('this is from POST', data)
+        location.reload()
       }
     })
   }

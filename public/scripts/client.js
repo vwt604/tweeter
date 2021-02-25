@@ -1,8 +1,8 @@
 /* 
 TO DO: 
 [] Fix post 400 request bad 
-[x] Reorder tweets functionality
 [] Refetch tweets on submission
+[x] Reorder tweets functionality
 [x] XSS prevention
 [] Fix timestamp 
 
@@ -19,7 +19,7 @@ $(document).ready(function() {
     }
   }
 
-  //Escape function for XSS prevention
+  //Escape function to prevent XSS vulnerability
   const escape = function (str) {
     let div = document.createElement("div");
     div.appendChild(document.createTextNode(str));
@@ -58,9 +58,12 @@ $(document).ready(function() {
   
     return $tweet;
   }
-  
+  //sorry about this variable scoping..
+  let tweetData;
   //Form submission validation
   $('form').submit(function (event) {
+    tweetData = $(this).serialize();
+    console.log(tweetData);
     event.preventDefault();
     let tweet = $("textarea").val();
     if (!tweet.length) {
@@ -68,8 +71,8 @@ $(document).ready(function() {
     } else if (tweet.length > 140) {
       $("#warning-maximum").slideToggle("fast");
     } else {
-      let tweetURL = $(this).serialize();
-      createNewTweet(tweetURL);
+      $(".tweet").remove()
+      createNewTweet();
     }
   });
 
@@ -88,13 +91,14 @@ $(document).ready(function() {
   };
   loadTweets();
   
+  
+
   const createNewTweet = function() {
-    let tweetData = $(this).serialize();
     $.ajax({
       url: '/tweets',
       method: "POST",
       data: tweetData, 
-      success: function(data) {
+      success: function() {
         loadTweets()
         // console.log('this is from POST', data)
       }

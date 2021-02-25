@@ -28,7 +28,7 @@ main.container {
 }
 
 footer {
-  height: 200px;
+  height: 10%;
 }
 
 
@@ -40,6 +40,8 @@ article {
   background-color: #ffffff;
   margin-top: 60px;
   opacity: 0.7;
+  overflow-wrap: break-word;
+  min-width: 260px;;
 }
 
 article:hover {

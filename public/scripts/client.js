@@ -37,92 +37,97 @@
 //hard coded tweet data
 
 
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-]
+// const data = [
+//   {
+//     "user": {
+//       "name": "Newton",
+//       "avatars": "https://i.imgur.com/73hZDYK.png"
+//       ,
+//       "handle": "@SirIsaac"
+//     },
+//     "content": {
+//       "text": "If I have seen further it is by standing on the shoulders of giants"
+//     },
+//     "created_at": 1461116232227
+//   },
+//   {
+//     "user": {
+//       "name": "Descartes",
+//       "avatars": "https://i.imgur.com/nlhLi3I.png",
+//       "handle": "@rd" },
+//     "content": {
+//       "text": "Je pense , donc je suis"
+//     },
+//     "created_at": 1461113959088
+//   }
+// ]
 
-const renderTweets = function(tweets) {
-  // loops through tweets
-  for (tweet of tweets) {
-    // calls createTweetElement for each tweet
-    // takes return value and appends it to the tweets container
-    $("#tweet-container").prepend(createTweetElement(tweet));
-  }
-}
 
-const createTweetElement = function(tweetData) {
-  const tweetDate = moment(tweetData.created_at);
-  const now = moment();
-  const daysAgo = now.diff(tweetDate, "days")
-
-  let $tweet = 
-    `<article class="tweet">
-    <header class="tweet-header">
-      <div class="tweet-header-left">
-        <img class="logo" src="${tweetData.user.avatars}">
-        <h2 class="full-name">${tweetData.user.name}</h2>
-      </div>
-      <div class="tweet-header-right">
-        <h3 class="user-handle">${tweetData.user.handle}</h3>
-      </div>
-    </header>
-      <p class="tweet-content">${tweetData.content.text}</p>
-    <footer class="tweet-footer">
-      <div class="tweet-footer-left">
-        <p class="date-stamp">${daysAgo} days ago</p>
-      </div>
-      <div class="tweet-footer-right">
-        <img class="icon" src='images/love.png'>
-        <img class="icon" src='images/retweet.png'>
-        <img class="icon" src='images/flag.png'>
-      </div>
-    </footer>
-  </article>`
-
-  return $tweet;
-}
 
 $(document).ready(function() {
-  renderTweets(data);
+  const renderTweets = function(tweets) {
+    // loops through tweets
+    for (tweet of tweets) {
+      const $tweet = createTweetElement(tweet);
+      // calls createTweetElement for each tweet
+      // takes return value and appends it to the tweets container
+      $("#tweet-container").prepend($tweet);
+    }
+  }
 
+  const createTweetElement = function(tweet) {
+    const tweetDate = moment(tweet.created_at);
+    const now = moment();
+    const daysAgo = now.diff(tweetDate, "days")
+  
+    let $tweet = 
+      `<article class="tweet">
+      <header class="tweet-header">
+        <div class="tweet-header-left">
+          <img class="logo" src="${tweet.user.avatars}">
+          <h2 class="full-name">${tweet.user.name}</h2>
+        </div>
+        <div class="tweet-header-right">
+          <h3 class="user-handle">${tweet.user.handle}</h3>
+        </div>
+      </header>
+        <p class="tweet-content">${tweet.content.text}</p>
+      <footer class="tweet-footer">
+        <div class="tweet-footer-left">
+          <p class="date-stamp">${daysAgo} days ago</p>
+        </div>
+        <div class="tweet-footer-right">
+          <img class="icon" src='images/love.png'>
+          <img class="icon" src='images/retweet.png'>
+          <img class="icon" src='images/flag.png'>
+        </div>
+      </footer>
+    </article>`
+  
+    return $tweet;
+  }
 
-  $('form').submit(function(event) {
+  $('form').submit(function (event) {
     event.preventDefault();
-    let newTweet =$("#tweet-text").serialize();
+    const tweetData = $(this).serialize();
     $.ajax({
       url: '/tweets',
-      method: 'POST',
-      data: newTweet
-    }).then((result) => {
-      $.ajax({
-        url: "/tweets", 
-        method: "GET", 
-      }).then((result) => {
-        renderTweets(result)
-      })
+      method: "POST",
+      data: tweetData
     })
-  })
+  });
+
+  const loadTweets = function() {
+    $.ajax({
+      url: '/tweets',
+      method: "GET",  
+    })
+    .then((tweets)=>{
+      renderTweets(tweets);
+    })
+  };
+  loadTweets();
+
 }); 
 
 

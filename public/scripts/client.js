@@ -62,7 +62,7 @@ const data = [
   }
 ]
 
-function renderTweets(tweets) {
+const renderTweets = function(tweets) {
   // loops through tweets
   for (tweet of tweets) {
     // calls createTweetElement for each tweet
@@ -71,7 +71,7 @@ function renderTweets(tweets) {
   }
 }
 
-function createTweetElement(tweetData) {
+const createTweetElement = function(tweetData) {
   const tweetDate = moment(tweetData.created_at);
   const now = moment();
   const daysAgo = now.diff(tweetDate, "days")
@@ -105,4 +105,55 @@ function createTweetElement(tweetData) {
 
 $(document).ready(function() {
   renderTweets(data);
+
+
+  $('form').submit(function(event) {
+    event.preventDefault();
+    let newTweet =$("#tweet-text").serialize();
+    $.ajax({
+      url: '/tweets',
+      method: 'POST',
+      data: newTweet
+    }).then((result) => {
+      $.ajax({
+        url: "/tweets", 
+        method: "GET", 
+      }).then((result) => {
+        renderTweets(result)
+      })
+    })
+  })
 }); 
+
+
+
+
+
+
+
+
+
+// /// LECTURE NOTES ///
+
+// app.get('/', (req, res) => {
+//   // const post = createPost(posts[1])
+//   // res.send(post)
+
+//   res.json(posts)
+// })
+
+// app.post('/', (req, res) => {
+//   // const { title, content } = req.body
+//   // const id = Object.keys(posts).length + 1
+
+//   // const postObject = {
+//   //   id,
+//   //   title,
+//   //   content,
+//   //   comments: []
+//   // }
+
+//   // posts[id] = postObject
+
+//   res.send('ok')
+// })

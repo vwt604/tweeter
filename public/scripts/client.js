@@ -4,7 +4,10 @@ TO DO:
 [x] Refetch tweets on submission
 [x] Reorder tweets functionality
 [x] XSS prevention
-[] Write a new tweet button
+[] Implement "Write a new tweet" button
+[] Responsive nav and header
+[] Add footer or body length
+
 
 
 [] Fix timestamp 
@@ -14,6 +17,7 @@ TO DO:
 [x] Fix overflow textbox
 [] Style error messages
 [x] icons show only on hover
+[] Change icon color on cl
 */
 
 $(document).ready(function() {
@@ -33,9 +37,7 @@ $(document).ready(function() {
 
   //Creates HTML element for tweets
   const createTweetElement = function(tweet) {
-    const tweetDate = moment(tweet.created_at);
-    const now = moment();
-    const hoursAgo = now.diff(tweetDate, "hours")
+    const date = moment(tweet.created_at).add(15, 'minutes').fromNow()
   
     let $tweet = 
       `<article class="tweet">
@@ -51,7 +53,7 @@ $(document).ready(function() {
         <p class="tweet-content">${escape(tweet.content.text)}</p>
       <footer class="tweet-footer">
         <div class="tweet-footer-left">
-          <p class="date-stamp">${hoursAgo} hours ago</p>
+          <p class="date-stamp">${date}</p>
         </div>
         <div class="tweet-footer-right">
           <img class="icon" src='images/love.png'>

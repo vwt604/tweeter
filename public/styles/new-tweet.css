@@ -1,3 +1,7 @@
+/* 
+* "Compose tweet" container with form. Visibility is toggled on button click
+*/
+
 textarea#tweet-text {
   width: 100%;
   border: none;
@@ -21,6 +25,8 @@ section.new-tweet {
   font-family: 'Bungee', cursive;
 }
 
+/* Button for submitting new tweets */
+
 button {
   padding: 6px;
   background-color: #5f7ea0;
@@ -33,6 +39,8 @@ output {
   font-size: 18px;
 }
 
+/* Error messages. Displays when there is error on form submission */
+
 #warning-empty {
   margin-top: 2%;
   color: red;
@@ -40,6 +48,7 @@ output {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
+
 #warning-maximum {
   margin-top: 2%;
   color: red;

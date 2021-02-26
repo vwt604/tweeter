@@ -1,30 +1,34 @@
-.nav {
+/*
+ * Navigation bar
+ */
+
+ .nav {
   height: 110px;
-  padding-top: 100px;
   width: 100%;
+  min-width: 500px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1.5em 1.5em 0.5em 1.5em;
   color: #FFFFFF;
   background-color: #5f9ea0;
-  position: fixed; /* Set the navbar to fixed position */
-  top: 0; /* Position the navbar at the top of the page */
+  position: fixed;
+  top: 0; 
 
 }
 
 .nav-mid {
-  width: 33.33%;
+  width: 33.33vh;
   font-family: 'Pacifico', cursive;
   font-size: 3em;
 }
 
 .nav-left {
-  width: 33.33%;
+  width: 33.33vh;
 }
 
 .nav-right {
-  width: 33.33%;
+  width: 33.33vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -34,10 +38,13 @@
   color: #FFFFFF;
 }
 
+/* "Write a new tweet" button */
+
 .nav-btn {
   background:none;
   border: none;
   outline: none;
+  color:#FFFFFF
 }
 
 button.nav-btn:hover {
@@ -46,6 +53,7 @@ button.nav-btn:hover {
 }
 
 .nav-arrow {
-  color: #E3B798;
+  color: #F6E481;
   font-size: 1.5em;
 }
+

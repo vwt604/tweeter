@@ -1,12 +1,16 @@
+/*
+ * Header section containing user profile image and name
+ */
+ 
 .header {
-  height: 250px;
   width: 100%;  
+  min-height: 250px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 10%;
-  padding-top: 5%;
+  padding-top: 12%;
+  padding-bottom: 5;
   background-color: #5f7ea0;
   background-image: url("https://www.transparenttextures.com/patterns/absurdity.png");
   color: white;

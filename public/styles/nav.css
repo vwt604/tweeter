@@ -11,8 +11,9 @@
   top: 0; /* Position the navbar at the top of the page */
 }
 
-.nav span {
-  font-family: 'Bungee', cursive;
+.nav-logo {
+  font-family: 'Pacifico', cursive;
+  font-size: 3em;
 }
 
 .nav-left {

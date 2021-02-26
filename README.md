@@ -6,11 +6,11 @@ This repository is the starter code for the project: Students will fork and clon
 
 ## Final Product
 
-## Clean, minimal design
+#### Clean, minimal design
 !["Screenshot of main page"](https://github.com/vwt604/tweeter/blob/master/public/images/main.png)
-## User-friendly features
+#### User-friendly features
 !["Screenshot of features"](https://github.com/vwt604/tweeter/blob/master/public/images/features.png)
-## Subtle hover effects
+#### Subtle hover effects
 !["Screenshot of hover effects"](https://github.com/vwt604/tweeter/blob/master/public/images/effects.png)
 
 ## Getting Started

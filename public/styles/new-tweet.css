@@ -10,6 +10,7 @@ textarea#tweet-text {
 section.new-tweet {
   margin-bottom: 5%;
   min-width: 270px;
+  display: none;
 }
 
 .form-bottom {

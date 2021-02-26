@@ -10,7 +10,7 @@ TO DO:
 
 
 
-[] Fix timestamp 
+[x] Fix timestamp 
 [x] Fix auto reload positioning
 
 
@@ -37,6 +37,8 @@ $(document).ready(function() {
 
   //Creates HTML element for tweets
   const createTweetElement = function(tweet) {
+    //Retrieves posting time
+    //Time adjustment added to match time delay possibly caused by vagrant
     const date = moment(tweet.created_at).add(15, 'minutes').fromNow()
   
     let $tweet = 
@@ -65,6 +67,29 @@ $(document).ready(function() {
   
     return $tweet;
   }
+
+  $('form').submit(function (event) {
+    tweetData = $(this).serialize();
+    event.preventDefault();
+    let tweet = $("textarea").val();
+    if (!tweet.length) {
+      $("#warning-empty").slideToggle("fast");
+    } else if (tweet.length > 140) {
+      $("#warning-maximum").slideToggle("fast");
+    } else {
+      $(".tweet").remove()
+      createNewTweet();
+    }
+  });
+
+
+  //Toggle compose element
+
+  $(".nav-arrow").click(function(){
+    $(".new-tweet").toggle();
+  });
+
+
 
   //sorry about this variable scoping..
   let tweetData;

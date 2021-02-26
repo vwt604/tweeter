@@ -4,20 +4,16 @@ TO DO:
 [x] Refetch tweets on submission
 [x] Reorder tweets functionality
 [x] XSS prevention
-[] Implement "Write a new tweet" button
-[] Responsive nav and header
-[] Add footer or body length
-
-
-
+[x] Implement "Write a new tweet" button
+[x] Add footer or body length
 [x] Fix timestamp 
 [x] Fix auto reload positioning
-
-
 [x] Fix overflow textbox
-[] Style error messages
 [x] icons show only on hover
-[] Change icon color on cl
+
+[] Responsive nav and header
+[] Style error messages
+
 */
 
 $(document).ready(function() {
@@ -87,6 +83,7 @@ $(document).ready(function() {
 
   $(".nav-arrow").click(function(){
     $(".new-tweet").toggle();
+    
   });
 
 

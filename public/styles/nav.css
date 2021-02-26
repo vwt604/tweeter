@@ -1,37 +1,50 @@
 .nav {
-  height: 10%;
+  height: 110px;
+  padding-top: 100px;
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
   padding: 1.5em 1.5em 0.5em 1.5em;
   color: #FFFFFF;
   background-color: #5f9ea0;
   position: fixed; /* Set the navbar to fixed position */
   top: 0; /* Position the navbar at the top of the page */
+
 }
 
-.nav-logo {
+.nav-mid {
+  width: 33.33%;
   font-family: 'Pacifico', cursive;
   font-size: 3em;
 }
 
 .nav-left {
-  display: flex;
+  width: 33.33%;
 }
 
 .nav-right {
+  width: 33.33%;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  align-items: flex-end;
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 0.75em;
   color: #FFFFFF;
 }
 
+.nav-btn {
+  background:none;
+  border: none;
+  outline: none;
+}
+
+button.nav-btn:hover {
+  opacity: 75%;
+}
+
 .nav-arrow {
-  display: flex;
-  justify-content: center;
   color: #E3B798;
   font-size: 1.5em;
 }

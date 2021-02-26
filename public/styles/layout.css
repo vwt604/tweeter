@@ -32,8 +32,9 @@ footer {
 }
 
 
- /* Tweet container */
-
+/*
+ * Tweet elements
+ */
 
 article {
   border: 3px solid #545149;
@@ -43,8 +44,6 @@ article {
   min-width: 260px;;
 }
 
-
-/* Tweet header */
 
 .tweet-header {
   height: 70px;
@@ -78,8 +77,6 @@ article {
   width: 50px;
 }
 
-/* Show handle on hover */
-
 article:hover h3 {
   opacity: 1;
   font-size: 1em;
@@ -95,14 +92,10 @@ h3 {
   color:#545149;
 }
 
-/* Tweet content */
-
 .tweet-content {
   margin: 30px 0;
   padding: 0 30px;
 }
-
-/* Tweet footer */
 
 .tweet-footer {
   height: 40px;
@@ -120,9 +113,6 @@ h3 {
 .tweet-footer .right {
   display: flex;
 }
-
-
-/* Show icons on hover */
 
 .icon {
   height: 16px;

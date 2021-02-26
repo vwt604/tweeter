@@ -33,6 +33,19 @@ output {
   font-size: 18px;
 }
 
-
+#warning-empty {
+  margin-top: 2%;
+  color: red;
+  font-size: 0.7em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+#warning-maximum {
+  margin-top: 2%;
+  color: red;
+  font-size: 0.7em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
 
 

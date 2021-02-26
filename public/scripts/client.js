@@ -1,20 +1,3 @@
-/* 
-TO DO: 
-[x] Fix post 400 request bad 
-[x] Refetch tweets on submission
-[x] Reorder tweets functionality
-[x] XSS prevention
-[x] Implement "Write a new tweet" button
-[x] Add footer or body length
-[x] Fix timestamp 
-[x] Fix auto reload positioning
-[x] Fix overflow textbox
-[x] icons show only on hover
-
-[] Responsive nav and header
-[] Style error messages
-
-*/
 
 $(document).ready(function() {
   const renderTweets = function(tweets) {
@@ -22,23 +5,21 @@ $(document).ready(function() {
       const $tweet = createTweetElement(tweet);
       $("#tweet-container").prepend($tweet);
     }
-  }
+  };
 
-  //Escape function to prevent XSS vulnerability
-  const escape = function (str) {
+  //Prevent XSS with Esaping
+  const escape = function(str) {
     let div = document.createElement("div");
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
   };
 
-  //Creates HTML element for tweets
   const createTweetElement = function(tweet) {
-    //Retrieves posting time
-    //Time had to be adjusted by 16 mins possibly because of time delay in the project/machine
+    // The function commented below is used to fix a time inaccuracy experienced on a different machine  
     // const time = moment(tweet.created_at).add(15, 'minutes').fromNow()
-    const time = moment(tweet.created_at).fromNow()
+    const time = moment(tweet.created_at).fromNow();
   
-    let $tweet = 
+    let $tweet =
       `<article class="tweet">
       <header class="tweet-header">
         <div class="tweet-header-left">
@@ -60,18 +41,19 @@ $(document).ready(function() {
           <img class="icon" src="images/flag.png">
         </div>
       </footer>
-    </article>`
+    </article>`;
   
     return $tweet;
-  }
+  };
 
-  //Toggle new tweet element
-  $(".nav-arrow").click(function(){
+  
+  //Button reveals tweet submissiom form on click
+  $(".nav-arrow").click(function() {
     $(".new-tweet").toggle();
   });
   
-
-  $("form").submit(function (event) {
+  
+  $("form").submit(function(event) {
     tweetData = $(this).serialize();
     event.preventDefault();
     let tweet = $("textarea").val();
@@ -80,13 +62,10 @@ $(document).ready(function() {
     } else if (tweet.length > 140) {
       $("#warning-maximum").slideToggle("fast");
     } else {
-      $(".tweet").remove()
+      $(".tweet").remove();
       createNewTweet();
     }
   });
-  
-
-  // ----- AJAX functions to GET and POST tweets ----- //
 
   //sorry about this variable scoping..!
   let tweetData;
@@ -94,11 +73,11 @@ $(document).ready(function() {
   const loadTweets = function() {
     $.ajax({
       url: "/tweets",
-      method: "GET",  
+      method: "GET",
       success: function(data) {
         renderTweets(data);
       }
-    })
+    });
   };
   loadTweets();
   
@@ -106,12 +85,12 @@ $(document).ready(function() {
     $.ajax({
       url: "/tweets",
       method: "POST",
-      data: tweetData, 
+      data: tweetData,
       success: function() {
-        location.reload()
-        loadTweets()
+        location.reload();
+        loadTweets();
       }
-    })
-  }
+    });
+  };
 
-});  
+});

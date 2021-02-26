@@ -3,7 +3,7 @@ $(document).ready(function() {
   $('textarea#tweet-text').on('input',function() { 
     const counter = $(this).closest(".new-tweet").find(".counter");
     const maxLength = 140;
-    const length = $(this).val().length; //grabs text-area input length
+    const length = $(this).val().length; 
     const remaining = maxLength - length;
 
     counter.text(remaining);

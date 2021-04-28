@@ -6,7 +6,7 @@ This repository is the starter code for the project: Students will fork and clon
 
 ## Final Product
 
-!["demo"](https://github.com/vwt604/scheduler/blob/master/docs/tweeter-demo.gif)
+!["Product demo"](https://github.com/vwt604/tweeter/blob/master/docs/tweeter-demo.gif)
 
 ## Getting Started
 
@@ -19,6 +19,3 @@ This repository is the starter code for the project: Students will fork and clon
 
 - Express
 - Node 5.10.x or above
-
-
-/Users/vanessayeung/lighthouse/w4/tweeter/public/images/effects.png

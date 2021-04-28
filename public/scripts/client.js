@@ -49,7 +49,7 @@ $(document).ready(function() {
   
   //Button reveals tweet submissiom form on click
   $(".nav-arrow").click(function() {
-    $(".new-tweet").toggle();
+    $(".new-tweet").slideToggle();
   });
   
   

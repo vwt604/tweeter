@@ -7,13 +7,15 @@ $(document).ready(function() {
     }
   };
 
-  //Prevent XSS with Esaping
+  // Prevent XSS with Esaping
   const escape = function(str) {
     let div = document.createElement("div");
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
   };
 
+
+  // Creates new Tweet element
   const createTweetElement = function(tweet) {
     // The function commented below is used to fix a time inaccuracy experienced on a different machine  
     // const time = moment(tweet.created_at).add(15, 'minutes').fromNow()
@@ -47,12 +49,12 @@ $(document).ready(function() {
   };
 
   
-  //Button reveals tweet submissiom form on click
+  // Button reveals tweet submissiom form on click
   $(".nav-arrow").click(function() {
     $(".new-tweet").slideToggle();
   });
   
-  
+  // Handles form validation
   $("form").submit(function(event) {
     tweetData = $(this).serialize();
     event.preventDefault();
@@ -70,6 +72,7 @@ $(document).ready(function() {
   //sorry about this variable scoping..!
   let tweetData;
 
+  // Renders tweets
   const loadTweets = function() {
     $.ajax({
       url: "/tweets",
@@ -81,6 +84,7 @@ $(document).ready(function() {
   };
   loadTweets();
   
+  // Posts new tweet to database
   const createNewTweet = function() {
     $.ajax({
       url: "/tweets",

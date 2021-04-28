@@ -1,5 +1,6 @@
-//runs a callback when the DOM is ready to be manipulated with jQuery.
 $(document).ready(function() {
+
+  // Countdown of maximum characters as user types
   $('textarea#tweet-text').on('input',function() { 
     const counter = $(this).closest(".new-tweet").find(".counter");
     const maxLength = 140;

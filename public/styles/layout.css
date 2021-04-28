@@ -27,9 +27,7 @@ footer {
   height: 50px;
 }
 
-/*
- * Tweet elements loaded from client.js
- */
+/* Tweet elements loaded from client.js */
 
 article {
   border: 3px solid #545149;

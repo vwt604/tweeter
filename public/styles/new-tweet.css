@@ -1,6 +1,4 @@
-/* 
-* "Compose tweet" container with form. Visibility is toggled on button click
-*/
+/* "Compose tweet" container with form. Visibility is toggled on button click */
 
 textarea#tweet-text {
   width: 100%;

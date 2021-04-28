@@ -6,7 +6,6 @@ This repository is the starter code for the project: Students will fork and clon
 
 ## Final Product
 
-
 !["demo"](https://github.com/vwt604/scheduler/blob/master/docs/tweeter-demo.gif)
 
 ## Getting Started

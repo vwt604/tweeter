@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import User from './components/User.vue'
 import Header from './components/Header.vue'
-import Nav from './components/Nav.vue'
 import Tweet from './components/Tweet.vue'
 import TweetComposer from './components/TweetComposer.vue'
 import { ref, onMounted } from 'vue'
@@ -34,9 +34,9 @@ console.log('Tweets', tweets)
 </script>
 
 <template>
-  <Nav />
-  <Header msg="Hello from Header" :user="user" />
+  <Header />
   <main>
+    <User :user="user" />
     <TweetComposer />
     <Tweet />
   </main>

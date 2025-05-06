@@ -35,6 +35,5 @@ defineProps<{
 .profile img {
   height: 100px;
   width: 100px;
-  margin-top: 20px;
 }
 </style>

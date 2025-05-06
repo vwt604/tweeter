@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <article class="tweet">
+  <article class="tweet container">
     <header class="tweet-header">
       <div class="tweet-header-left">
         <img class="logo" src="" />

@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <section class="new-tweet">
+  <section class="new-tweet container">
     <h2>Compose Tweet</h2>
     <form method="POST" action="/tweets/">
       <textarea

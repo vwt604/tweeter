@@ -1,8 +1,7 @@
 /* Header section containing user profile image and name */
- 
-.header {
-  width: 100%;  
-  min-height: 250px;
+
+/* .header {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -18,7 +17,4 @@
   height: 100px;
   width: 100px;
   margin-top: 20px;
-}
-
-
-
+} */

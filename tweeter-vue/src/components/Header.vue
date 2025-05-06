@@ -1,82 +1,89 @@
-<script setup lang="ts">
-
-</script>
-
 <template>
-  <header class = "header">
-    <div class=header-left>
-    </div>
-    <div class ="header-mid">
-      <div class="header-logo">
-        Tweeter
-      </div>
-    </div>
-    <div class="header-right">
-      <button class="header-btn">
-        <div class="header-text">
-          <strong>Write</strong> a new tweet 
-        </div>
-        <div class="header-arrow">&#8964</div>
+  <header class="header" role="banner">
+    <nav class="header__nav" aria-label="Main navigation">
+      <div class="header__side"></div>
+      <div class="header__logo">Tweeter</div>
+      <button
+        class="header__write-btn"
+        aria-label="Write a new tweet"
+        type="button"
+      >
+        <span>Write a new tweet</span>
+        <span class="header__arrow" aria-hidden="true">&#8964;</span>
       </button>
-    </div>
+    </nav>
   </header>
 </template>
 
 <style scoped>
-
 .header {
   height: 110px;
   width: 100%;
-  min-width: 500px;
+  padding: 0.5em 1.5em;
+  color: #fff;
+  background-color: #5f9ea0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header__nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5em 1.5em 0.5em 1.5em;
-  color: #FFFFFF;
-  background-color: #5f9ea0;
-  position: sticky;
-  top: 0; 
+  position: relative;
 }
 
-.header-mid {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 33.33vw;
+.header__side {
+  flex: 1 1 0;
+}
+
+.header__logo {
+  flex: 0 1 auto;
   font-family: 'Pacifico', cursive;
   font-size: 3em;
+  letter-spacing: 1px;
+  text-align: center;
 }
 
-.header-left {
-  width: 33.33vw;
-}
-
-.header-right {
-  width: 33.33vw;
-  display: flex;
-  flex-direction: column;
+.header__write-btn {
+  flex: 1 1 0;
   justify-content: flex-end;
-  align-items: flex-end;
-  font-family: 'Source Sans Pro', sans-serif;
+  display: flex;
   font-size: 0.75em;
-  color: #FFFFFF;
-}
-
-.header-btn {
-  background:none;
+  background: none;
   border: none;
   outline: none;
-  color:#FFFFFF
+  align-items: center;
+  color: #fff;
+  font-family: 'Source Sans Pro', sans-serif;
+  cursor: pointer;
+  padding: 0.5em 1em;
 }
 
-button.header-btn:hover {
-  opacity: 75%;
-  border: dashed 0.5px;
-}
-
-.header-arrow {
-  color: #F6E481;
+.header__arrow {
+  color: #f6e481;
   font-size: 1.5em;
+  margin-left: 0.5em;
 }
 
+.header__write-btn:hover,
+.header__write-btn:focus {
+  opacity: 0.75;
+  border: 1px dashed #fff;
+}
+
+@media (max-width: 600px) {
+  .header {
+    height: auto;
+    padding: 0.5em;
+  }
+  .header__logo {
+    font-size: 2em;
+  }
+  .header__write-btn {
+    font-size: 1em;
+    padding: 0.25em 0.5em;
+  }
+}
 </style>

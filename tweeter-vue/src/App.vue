@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
 import Header from './components/Header.vue'
+import Nav from './components/Nav.vue'
 import { ref, onMounted } from 'vue'
 
 const tweets = ref([])
@@ -32,8 +32,8 @@ console.log('Tweets', tweets)
 </script>
 
 <template>
+  <Nav />
   <Header msg="Hello from Header" :user="user" />
-  <HelloWorld msg="Hello World" />
 </template>
 
 <style scoped></style>

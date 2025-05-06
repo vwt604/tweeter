@@ -1,8 +1,8 @@
 <template>
   <header class="header" role="banner">
-    <nav class="header__nav" aria-label="Main navigation">
-      <div class="header__side"></div>
-      <div class="header__logo">Tweeter</div>
+    <div class="header__front"></div>
+    <div class="header__logo">Tweeter</div>
+    <div class="header__end">
       <button
         class="header__write-btn"
         aria-label="Write a new tweet"
@@ -11,15 +11,16 @@
         <span>Write a new tweet</span>
         <span class="header__arrow" aria-hidden="true">&#8964;</span>
       </button>
-    </nav>
+    </div>
   </header>
 </template>
 
 <style scoped>
 .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   height: 110px;
-  width: 100%;
-  padding: 0.5em 1.5em;
   color: #fff;
   background-color: #5f9ea0;
   position: sticky;
@@ -27,14 +28,7 @@
   z-index: 100;
 }
 
-.header__nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-}
-
-.header__side {
+.header__front {
   flex: 1 1 0;
 }
 
@@ -46,19 +40,25 @@
   text-align: center;
 }
 
-.header__write-btn {
+.header__end {
   flex: 1 1 0;
-  justify-content: flex-end;
   display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  color: #fff;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.header__write-btn {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 0.5em 1em;
   font-size: 0.75em;
   background: none;
   border: none;
   outline: none;
   align-items: center;
-  color: #fff;
-  font-family: 'Source Sans Pro', sans-serif;
-  cursor: pointer;
-  padding: 0.5em 1em;
 }
 
 .header__arrow {
@@ -69,11 +69,10 @@
 
 .header__write-btn:hover,
 .header__write-btn:focus {
-  opacity: 0.75;
   border: 1px dashed #fff;
 }
 
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
   .header {
     height: auto;
     padding: 0.5em;
@@ -85,5 +84,5 @@
     font-size: 1em;
     padding: 0.25em 0.5em;
   }
-}
+} */
 </style>

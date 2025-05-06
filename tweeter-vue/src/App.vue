@@ -42,4 +42,8 @@ console.log('Tweets', tweets)
   </main>
 </template>
 
-<style scoped></style>
+<style scoped>
+#app {
+  margin: 0 auto;
+}
+</style>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Header from './components/Header.vue'
 import Nav from './components/Nav.vue'
+import TweetComposer from './components/TweetComposer.vue'
 import { ref, onMounted } from 'vue'
 
 const tweets = ref([])
@@ -34,6 +35,9 @@ console.log('Tweets', tweets)
 <template>
   <Nav />
   <Header msg="Hello from Header" :user="user" />
+  <main>
+    <TweetComposer />
+  </main>
 </template>
 
 <style scoped></style>

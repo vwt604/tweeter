@@ -1,6 +1,5 @@
-
-$(document).ready(function() {
-  const renderTweets = function(tweets) {
+$(document).ready(function () {
+  const renderTweets = function (tweets) {
     for (tweet of tweets) {
       const $tweet = createTweetElement(tweet);
       $("#tweet-container").prepend($tweet);
@@ -8,21 +7,19 @@ $(document).ready(function() {
   };
 
   // Prevent XSS with Esaping
-  const escape = function(str) {
+  const escape = function (str) {
     let div = document.createElement("div");
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
   };
 
-
   // Creates new Tweet element
-  const createTweetElement = function(tweet) {
-    // The function commented below is used to fix a time inaccuracy experienced on a different machine  
+  const createTweetElement = function (tweet) {
+    // The function commented below is used to fix a time inaccuracy experienced on a different machine
     // const time = moment(tweet.created_at).add(15, 'minutes').fromNow()
     const time = moment(tweet.created_at).fromNow();
-  
-    let $tweet =
-      `<article class="tweet">
+
+    let $tweet = `<article class="tweet">
       <header class="tweet-header">
         <div class="tweet-header-left">
           <img class="logo" src="${tweet.user.avatars}">
@@ -44,18 +41,17 @@ $(document).ready(function() {
         </div>
       </footer>
     </article>`;
-  
+
     return $tweet;
   };
 
-  
   // Button reveals tweet submissiom form on click
-  $(".nav-arrow").click(function() {
+  $(".nav-arrow").click(function () {
     $(".new-tweet").slideToggle();
   });
-  
+
   // Handles form validation
-  $("form").submit(function(event) {
+  $("form").submit(function (event) {
     tweetData = $(this).serialize();
     event.preventDefault();
     let tweet = $("textarea").val();
@@ -73,29 +69,27 @@ $(document).ready(function() {
   let tweetData;
 
   // Renders tweets
-  const loadTweets = function() {
+  const loadTweets = function () {
     $.ajax({
-      url: "/tweets",
+      url: "/api/tweets",
       method: "GET",
-      success: function(data) {
+      success: function (data) {
         renderTweets(data);
-      }
+      },
     });
   };
   loadTweets();
-  
+
   // Posts new tweet to database
-  const createNewTweet = function() {
+  const createNewTweet = function () {
     $.ajax({
-      url: "/tweets",
+      url: "/api/tweets",
       method: "POST",
       data: tweetData,
-      success: function() {
+      success: function () {
         location.reload();
         loadTweets();
-      }
+      },
     });
   };
-
 });
-

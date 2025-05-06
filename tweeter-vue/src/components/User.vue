@@ -1,0 +1,40 @@
+<script setup lang="ts">
+defineProps<{
+  user: {
+    name: string
+    image: string
+  }
+}>()
+</script>
+
+<template>
+  <section class="profile">
+    <div class="profile-img">
+      <img :src="user.name" />
+    </div>
+    <br />
+    <div class="profile-name">
+      <h4>{{ user.name }}</h4>
+    </div>
+  </section>
+</template>
+
+<style scoped>
+.profile {
+  width: 100%;
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #5f7ea0;
+  background-image: url('https://www.transparenttextures.com/patterns/absurdity.png');
+  color: white;
+}
+
+.profile img {
+  height: 100px;
+  width: 100px;
+  margin-top: 20px;
+}
+</style>

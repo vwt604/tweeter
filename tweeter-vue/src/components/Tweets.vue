@@ -87,9 +87,11 @@ article {
   width: 50px;
 }
 
-article:hover h3 {
+article:hover h3,
+article:hover img.icon {
   opacity: 1;
   font-size: 1em;
+  transition: opacity 0.3s ease-in-out;
 }
 
 article:hover {
@@ -129,10 +131,5 @@ h3 {
   margin: 5px;
   opacity: 0;
   color: #545149;
-}
-
-article:hover img.icon {
-  opacity: 1;
-  font-size: 1em;
 }
 </style>

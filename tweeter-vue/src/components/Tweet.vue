@@ -1,17 +1,33 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+defineProps<{
+  tweets: [
+    {
+      user: {
+        name: string
+        avatars: string
+        handle: string
+      }
+      content: {
+        text: string
+      }
+      created_at: number
+    },
+  ]
+}>()
+</script>
 
 <template>
-  <article class="tweet container">
+  <article v-for="tweet in tweets" class="tweet container">
     <header class="tweet-header">
       <div class="tweet-header-left">
-        <img class="logo" src="" />
-        <h2 class="full-name">${tweet.user.name}</h2>
+        <img class="logo" :src="tweet.user.avatars" />
+        <h2 class="full-name">{{ tweet.user.name }}</h2>
       </div>
       <div class="tweet-header-right">
-        <h3 class="user-handle">${tweet.user.handle}</h3>
+        <h3 class="user-handle">{{ tweet.user.handle }}</h3>
       </div>
     </header>
-    <p class="tweet-content">${escape(tweet.content.text)}</p>
+    <p class="tweet-content">{{ tweet.content.text }}ˆ</p>
     <footer class="tweet-footer">
       <div class="tweet-footer-left">
         <p class="date-stamp">${time}</p>

@@ -6,12 +6,12 @@ import Tweet from './components/Tweet.vue'
 import TweetComposer from './components/TweetComposer.vue'
 
 const tweets = ref([])
-const isLoading = ref(true)
 const hasError = ref(false)
 const tweetText = ref('')
+const showComposer = ref(false)
 
 const user = {
-  name: 'Moira Rose',
+  name: 'Yeung Money',
   image: '../assets/images/profile-hex.png',
 }
 
@@ -25,8 +25,6 @@ const loadTweets = async () => {
   } catch (error) {
     hasError.value = true
     console.error('Error fetching tweets:', error)
-  } finally {
-    isLoading.value = false
   }
 }
 
@@ -49,14 +47,22 @@ const submitTweet = async (text) => {
   }
 }
 
+function toggleForm() {
+  showComposer.value = !showComposer.value
+}
+
 onMounted(loadTweets)
 </script>
 
 <template>
-  <Header />
+  <Header @toggle-form="toggleForm" />
   <main>
     <User :user="user" />
-    <TweetComposer v-model="tweetText" @submit-tweet="submitTweet" />
+    <TweetComposer
+      v-model="tweetText"
+      @submit-tweet="submitTweet"
+      v-if="showComposer"
+    />
     <Tweet :tweets="tweets" />
   </main>
 </template>

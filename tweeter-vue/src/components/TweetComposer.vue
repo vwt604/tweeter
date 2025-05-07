@@ -1,14 +1,24 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from 'vue'
+const emit = defineEmits(['submit-tweet'])
+
+const tweetText = ref('')
+
+function submitTweet() {
+  emit('submit-tweet', tweetText.value)
+}
+</script>
 
 <template>
   <section class="new-tweet container">
     <h2>Compose Tweet</h2>
-    <form method="POST" action="/tweets/">
+    <form @submit.prevent="submitTweet">
       <textarea
         name="text"
         type="text"
         id="tweet-text"
         placeholder="What are you humming about?"
+        v-model="tweetText"
       ></textarea>
       <div class="form-bottom">
         <button type="submit" class="btn-submit">Tweet</button>

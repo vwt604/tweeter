@@ -47,17 +47,15 @@ function submitTweet() {
         <output name="counter" class="counter" for="tweet-text">{{
           remainingChars
         }}</output>
-        <div v-if="error.message" class="warning">
-          {{ error.message }}
-        </div>
+      </div>
+      <div v-if="error.message" class="warning">
+        {{ error.message }}
       </div>
     </form>
   </section>
 </template>
 
 <style scoped>
-/* "Compose tweet" container with form. Visibility is toggled on button click */
-
 textarea {
   width: 100%;
   border: none;
@@ -67,37 +65,26 @@ textarea {
   outline: none;
 }
 
-section.new-tweet {
-  margin-bottom: 5%;
-  min-width: 270px;
-}
-
 .form-bottom {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 2%;
-  font-family: 'Bungee', cursive;
 }
 
-/* Button for submitting new tweets */
-
-button {
+.btn-submit {
   padding: 6px;
   background-color: #5f7ea0;
   color: white;
-  font-size: 16px;
+  font-size: 1rem;
+  font-family: 'Bungee', sans-serif;
 }
 
 output {
-  font-family: 'Bungee', cursive;
+  font-family: 'Bungee', sans-serif;
   font-size: 18px;
 }
 
-/* Error messages. Displays when there is error on form submission */
-
 .warning {
-  margin-top: 2%;
   color: red;
   font-size: 0.7em;
   text-transform: uppercase;

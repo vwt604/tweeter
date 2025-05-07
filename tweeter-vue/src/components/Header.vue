@@ -75,11 +75,12 @@ function toggleForm() {
   border: none;
   outline: none;
   color:#FFFFFF;
-  cursor: pointer;
+  padding: var(--space-xs) var(--space-sm);
 }
 
 button.header-btn:hover {
   border: dashed 0.5px;
+  border-radius: var(--border-radius);
 }
 
 .header-arrow {

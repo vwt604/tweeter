@@ -12,7 +12,6 @@ defineProps<{
     <div class="profile-img">
       <img :src="user.image" />
     </div>
-    <br />
     <div class="profile-name">
       <h4>{{ user.name }}</h4>
     </div>

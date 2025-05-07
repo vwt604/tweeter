@@ -2,7 +2,7 @@
 import { ref, onMounted } from 'vue'
 import User from './components/User.vue'
 import Header from './components/Header.vue'
-import Tweet from './components/Tweet.vue'
+import Tweets from './components/Tweets.vue'
 import TweetComposer from './components/TweetComposer.vue'
 
 const tweets = ref([])
@@ -63,7 +63,7 @@ onMounted(loadTweets)
       @submit-tweet="submitTweet"
       v-if="showComposer"
     />
-    <Tweet :tweets="tweets" />
+    <Tweets :tweets="tweets" />
   </main>
 </template>
 

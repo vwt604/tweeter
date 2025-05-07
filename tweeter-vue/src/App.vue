@@ -1,13 +1,14 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
 import User from './components/User.vue'
 import Header from './components/Header.vue'
 import Tweet from './components/Tweet.vue'
 import TweetComposer from './components/TweetComposer.vue'
-import { ref, onMounted } from 'vue'
 
 const tweets = ref([])
 const isLoading = ref(true)
 const hasError = ref(false)
+const tweetText = ref('')
 
 const user = {
   name: 'Moira Rose',
@@ -19,7 +20,8 @@ const loadTweets = async () => {
     const response = await fetch('/api/tweets')
     if (!response.ok) throw new Error('Failed to fetch tweets')
     const data = await response.json()
-    tweets.value = data
+    // Sort by created_at descending (most recent first)
+    tweets.value = data.sort((a, b) => b.created_at - a.created_at)
   } catch (error) {
     hasError.value = true
     console.error('Error fetching tweets:', error)
@@ -41,6 +43,7 @@ const submitTweet = async (text) => {
     })
     if (!response.ok) throw new Error('Failed to post tweet')
     await loadTweets()
+    tweetText.value = ''
   } catch (error) {
     console.error('Error posting tweet:', error)
   }
@@ -53,7 +56,7 @@ onMounted(loadTweets)
   <Header />
   <main>
     <User :user="user" />
-    <TweetComposer @submit-tweet="submitTweet" />
+    <TweetComposer v-model="tweetText" @submit-tweet="submitTweet" />
     <Tweet :tweets="tweets" />
   </main>
 </template>

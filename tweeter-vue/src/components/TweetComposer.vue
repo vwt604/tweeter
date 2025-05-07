@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-const emit = defineEmits(['submit-tweet'])
-
-const tweetText = ref('')
+import { defineProps, defineEmits } from 'vue'
+const props = defineProps<{ modelValue: string }>()
+const emit = defineEmits(['update:modelValue', 'submit-tweet'])
 
 function submitTweet() {
-  emit('submit-tweet', tweetText.value)
+  emit('submit-tweet', props.modelValue)
 }
 </script>
 
@@ -18,17 +17,11 @@ function submitTweet() {
         type="text"
         id="tweet-text"
         placeholder="What are you humming about?"
-        v-model="tweetText"
+        :value="props.modelValue"
+        @input="emit('update:modelValue', $event.target.value)"
       ></textarea>
       <div class="form-bottom">
         <button type="submit" class="btn-submit">Tweet</button>
-        <output name="counter" class="counter" for="tweet-text">140</output>
-      </div>
-      <div id="warning-empty" class="warning" style="display: none">
-        Oops, your tweet is empty
-      </div>
-      <div id="warning-maximum" class="warning" style="display: none">
-        Oops, your tweet is too long
       </div>
     </form>
   </section>

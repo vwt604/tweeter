@@ -1,9 +1,31 @@
 <script setup lang="ts">
-import { defineProps, defineEmits } from 'vue'
+import { defineProps, defineEmits, computed, reactive } from 'vue'
+
+const MAX_CHARACTERS = 140
 const props = defineProps<{ modelValue: string }>()
 const emit = defineEmits(['update:modelValue', 'submit-tweet'])
 
+const remainingChars = computed(() => MAX_CHARACTERS - props.modelValue?.length)
+const isOverLimit = computed(() => charCount.value < 0)
+
+const error = reactive({
+  message: '',
+})
+
+function validate() {
+  if (remainingChars.value < 0) {
+    error.message = 'Oops, your tweet is too long'
+    return false
+  }
+  if (!props.modelValue?.trim()) {
+    error.message = 'Oops, your tweet is empty'
+    return false
+  }
+  return true
+}
+
 function submitTweet() {
+  if (!validate()) return
   emit('submit-tweet', props.modelValue)
 }
 </script>
@@ -22,6 +44,12 @@ function submitTweet() {
       ></textarea>
       <div class="form-bottom">
         <button type="submit" class="btn-submit">Tweet</button>
+        <output name="counter" class="counter" for="tweet-text">{{
+          remainingChars
+        }}</output>
+        <div v-if="error.message" class="warning">
+          {{ error.message }}
+        </div>
       </div>
     </form>
   </section>
@@ -30,7 +58,7 @@ function submitTweet() {
 <style scoped>
 /* "Compose tweet" container with form. Visibility is toggled on button click */
 
-textarea#tweet-text {
+textarea {
   width: 100%;
   border: none;
   border-bottom: 3px solid darkslategrey;
@@ -68,15 +96,7 @@ output {
 
 /* Error messages. Displays when there is error on form submission */
 
-#warning-empty {
-  margin-top: 2%;
-  color: red;
-  font-size: 0.7em;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-#warning-maximum {
+.warning {
   margin-top: 2%;
   color: red;
   font-size: 0.7em;

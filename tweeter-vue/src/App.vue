@@ -12,7 +12,7 @@ const showComposer = ref(false)
 
 const user = {
   name: 'Yeung Money',
-  image: '../assets/images/profile-hex.png',
+  image: '/assets/images/profile-hex.png',
 }
 
 const loadTweets = async () => {

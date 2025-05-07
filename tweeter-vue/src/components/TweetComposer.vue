@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineProps, defineEmits, computed, reactive } from 'vue'
+import { computed, reactive } from 'vue'
 
 const MAX_CHARACTERS = 140
 const props = defineProps<{ modelValue: string }>()

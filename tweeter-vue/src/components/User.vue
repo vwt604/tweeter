@@ -10,7 +10,7 @@ defineProps<{
 <template>
   <section class="profile">
     <div class="profile-img">
-      <img :src="user.name" />
+      <img :src="user.image" />
     </div>
     <br />
     <div class="profile-name">
@@ -22,7 +22,6 @@ defineProps<{
 <style scoped>
 .profile {
   width: 100%;
-  min-height: 250px;
   display: flex;
   flex-direction: column;
   justify-content: center;

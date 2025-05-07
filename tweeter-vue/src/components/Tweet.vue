@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import moment from 'moment'
+
 defineProps<{
   tweets: [
     {
@@ -27,10 +29,12 @@ defineProps<{
         <h3 class="user-handle">{{ tweet.user.handle }}</h3>
       </div>
     </header>
-    <p class="tweet-content">{{ tweet.content.text }}ˆ</p>
+    <p class="tweet-content">{{ tweet.content.text }}</p>
     <footer class="tweet-footer">
       <div class="tweet-footer-left">
-        <p class="date-stamp">${time}</p>
+        <p class="date-stamp">
+          {{ moment(tweet.created_at).fromNow() || null }}
+        </p>
       </div>
       <div class="tweet-footer-right">
         <img class="icon" src="../assets/images/love.png" />

@@ -19,30 +19,32 @@ defineProps<{
 </script>
 
 <template>
-  <article v-for="tweet in tweets" class="tweet container">
-    <header class="tweet-header">
-      <div class="tweet-header-left">
-        <img class="logo" :src="tweet.user.avatars" />
-        <h2 class="full-name">{{ tweet.user.name }}</h2>
-      </div>
-      <div class="tweet-header-right">
-        <h3 class="user-handle">{{ tweet.user.handle }}</h3>
-      </div>
-    </header>
-    <p class="tweet-content">{{ tweet.content.text }}</p>
-    <footer class="tweet-footer">
-      <div class="tweet-footer-left">
-        <p class="date-stamp">
-          {{ moment(tweet.created_at).fromNow() || null }}
-        </p>
-      </div>
-      <div class="tweet-footer-right">
-        <img class="icon" src="../assets/images/love.png" />
-        <img class="icon" src="../assets/images/retweet.png" />
-        <img class="icon" src="../assets/images/flag.png" />
-      </div>
-    </footer>
-  </article>
+  <section>
+    <article v-for="tweet in tweets" class="tweet container">
+      <header class="tweet-header">
+        <div class="tweet-header-left">
+          <img class="logo" :src="tweet.user.avatars" />
+          <h2 class="full-name">{{ tweet.user.name }}</h2>
+        </div>
+        <div class="tweet-header-right">
+          <h3 class="user-handle">{{ tweet.user.handle }}</h3>
+        </div>
+      </header>
+      <p class="tweet-content">{{ tweet.content.text }}</p>
+      <footer class="tweet-footer">
+        <div class="tweet-footer-left">
+          <p class="date-stamp">
+            {{ moment(tweet.created_at).fromNow() || null }}
+          </p>
+        </div>
+        <div class="tweet-footer-right">
+          <img class="icon" src="../assets/images/love.png" />
+          <img class="icon" src="../assets/images/retweet.png" />
+          <img class="icon" src="../assets/images/flag.png" />
+        </div>
+      </footer>
+    </article>
+  </section>
 </template>
 
 <style scoped>
@@ -51,6 +53,7 @@ article {
   background-color: #ffffff;
   overflow-wrap: break-word;
   min-width: 260px;
+  margin-bottom: var(--space-sm);
 }
 
 .tweet-header {

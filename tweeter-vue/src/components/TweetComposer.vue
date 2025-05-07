@@ -63,6 +63,7 @@ textarea {
   height: 40px;
   background: none;
   outline: none;
+  margin: var(--space-sm) 0;
 }
 
 .form-bottom {

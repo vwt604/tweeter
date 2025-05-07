@@ -49,7 +49,6 @@ defineProps<{
 article {
   border: 3px solid #545149;
   background-color: #ffffff;
-  margin-top: 5%;
   overflow-wrap: break-word;
   min-width: 260px;
 }
@@ -59,7 +58,6 @@ article {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 10px;
   padding: 10px;
 }
 
@@ -89,7 +87,6 @@ article {
 article:hover h3 {
   opacity: 1;
   font-size: 1em;
-  margin-right: 10px;
 }
 
 article:hover {
@@ -134,6 +131,5 @@ h3 {
 article:hover img.icon {
   opacity: 1;
   font-size: 1em;
-  margin-right: 10px;
 }
 </style>

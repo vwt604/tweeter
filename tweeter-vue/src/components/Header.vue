@@ -31,7 +31,7 @@ function toggleForm() {
 <style>
 
 .header {
-  height: 100px;
+  min-height: 72px;
   width: 100%;
   color: #FFFFFF;
   background-color: #5f9ea0;

@@ -5,15 +5,15 @@ const MAX_CHARACTERS = 140
 const props = defineProps<{ modelValue: string }>()
 const emit = defineEmits(['update:modelValue', 'submit-tweet'])
 
-const remainingChars = computed(() => MAX_CHARACTERS - props.modelValue?.length)
-const isOverLimit = computed(() => charCount.value < 0)
+const charsLeft = computed(() => MAX_CHARACTERS - props.modelValue?.length)
+const isOverLimit = computed(() => charsLeft.value < 0)
 
 const error = reactive({
   message: '',
 })
 
 function validate() {
-  if (remainingChars.value < 0) {
+  if (isOverLimit.value) {
     error.message = 'Oops, your tweet is too long'
     return false
   }
@@ -45,7 +45,7 @@ function submitTweet() {
       <div class="form-bottom">
         <button type="submit" class="btn-submit">Tweet</button>
         <output name="counter" class="counter" for="tweet-text">{{
-          remainingChars
+          charsLeft
         }}</output>
       </div>
       <div v-if="error.message" class="warning">

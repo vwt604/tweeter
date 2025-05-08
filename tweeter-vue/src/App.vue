@@ -5,10 +5,24 @@ import Header from './components/Header.vue'
 import Tweets from './components/Tweets.vue'
 import TweetComposer from './components/TweetComposer.vue'
 
-const tweets = ref([])
-const hasError = ref(false)
-const tweetText = ref('')
-const showComposer = ref(false)
+interface Tweet {
+  user: {
+    name: string
+    avatars: string
+    handle: string
+  }
+  content: {
+    text: string
+  }
+  created_at: number
+}
+
+const tweets = ref<Tweet[]>([])
+const isLoading = ref<boolean>(false)
+const hasError = ref<boolean>(false)
+const errorMessage = ref<string>('')
+const tweetText = ref<string>('')
+const showComposer = ref<boolean>(false)
 
 const user = {
   name: 'Yeung Money',
@@ -17,6 +31,10 @@ const user = {
 
 const loadTweets = async () => {
   try {
+    isLoading.value = true
+    hasError.value = false
+    errorMessage.value = ''
+
     const response = await fetch('/api/tweets')
     if (!response.ok) throw new Error('Failed to fetch tweets')
     const data = await response.json()
@@ -24,7 +42,10 @@ const loadTweets = async () => {
     tweets.value = data.sort((a, b) => b.created_at - a.created_at)
   } catch (error) {
     hasError.value = true
+    errorMessage.value = 'Unable to load tweets. Please try again later.'
     console.error('Error fetching tweets:', error)
+  } finally {
+    isLoading.value = false
   }
 }
 
@@ -63,12 +84,14 @@ onMounted(loadTweets)
       @submit-tweet="submitTweet"
       v-if="showComposer"
     />
-    <Tweets :tweets="tweets" />
+    <div v-if="isLoading">Loading...</div>
+    <div v-else-if="hasError">{{ errorMessage }}</div>
+    <Tweets v-else :tweets="tweets" />
   </main>
 </template>
 
 <style scoped>
-#app {
+main {
   margin: 0 auto;
 }
 </style>

@@ -49,7 +49,7 @@ const loadTweets = async () => {
   }
 }
 
-const submitTweet = async (text) => {
+const submitTweet = async (text: string): Promise<void> => {
   try {
     const response = await fetch('/api/tweets', {
       method: 'POST',
@@ -63,7 +63,9 @@ const submitTweet = async (text) => {
     if (!response.ok) throw new Error('Failed to post tweet')
     await loadTweets()
     tweetText.value = ''
+    showComposer.value = false
   } catch (error) {
+    errorMessage.value = 'Error posting tweet. Please try again.'
     console.error('Error posting tweet:', error)
   }
 }
@@ -84,7 +86,8 @@ onMounted(loadTweets)
       @submit-tweet="submitTweet"
       v-if="showComposer"
     />
-    <div v-if="isLoading">Loading...</div>
+    <!-- TODO: loading spinner -->
+    <div v-if="isLoading"></div>
     <div v-else-if="hasError">{{ errorMessage }}</div>
     <Tweets v-else :tweets="tweets" />
   </main>

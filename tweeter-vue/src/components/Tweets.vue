@@ -2,20 +2,22 @@
 import moment from 'moment'
 
 defineProps<{
-  tweets: [
-    {
-      user: {
-        name: string
-        avatars: string
-        handle: string
-      }
-      content: {
-        text: string
-      }
-      created_at: number
-    },
-  ]
+  tweets: Array<{
+    user: {
+      name: string
+      avatars: string
+      handle: string
+    }
+    content: {
+      text: string
+    }
+    created_at: number
+  }>
 }>()
+
+function formatDate(timestamp: number): string {
+  return moment(timestamp).fromNow()
+}
 </script>
 
 <template>
@@ -23,7 +25,11 @@ defineProps<{
     <article v-for="tweet in tweets" class="tweet container">
       <header class="tweet-header">
         <div class="tweet-header-left">
-          <img class="logo" :src="tweet.user.avatars" />
+          <img
+            class="logo"
+            :src="tweet.user.avatars"
+            :alt="`${tweet.user.name}'s avatar`"
+          />
           <h2 class="full-name">{{ tweet.user.name }}</h2>
         </div>
         <div class="tweet-header-right">
@@ -34,7 +40,7 @@ defineProps<{
       <footer class="tweet-footer">
         <div class="tweet-footer-left">
           <p class="date-stamp">
-            {{ moment(tweet.created_at).fromNow() || null }}
+            {{ formatDate(tweet.created_at) }}
           </p>
         </div>
         <div class="tweet-footer-right">
@@ -119,10 +125,6 @@ h3 {
   text-transform: uppercase;
   letter-spacing: 1px;
   background-color: #fff3e0;
-}
-
-.tweet-footer .right {
-  display: flex;
 }
 
 .icon {

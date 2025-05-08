@@ -2,7 +2,7 @@
   "name": "tweeter-vue",
   "private": true,
   "description": "Shiny frontend for an old project.",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",

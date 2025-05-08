@@ -10,7 +10,7 @@ defineProps<{
 <template>
   <section class="profile">
     <div class="profile-img">
-      <img :src="user.image" />
+      <img :src="user.image" :alt="`Profile picture of ${user.name}`" />
     </div>
     <div class="profile-name">
       <h4>{{ user.name }}</h4>

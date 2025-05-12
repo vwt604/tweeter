@@ -9,5 +9,4 @@ Tweeter is a simple, single-page Twitter clone. The project has two versions: a 
 ## Getting Started
 
 1. Install dependencies using the `npm install` command.
-2. Start the web server using the `npm run local` command. The app will be served at <http://localhost:8080/>.
-3. Start the frontend using the `npm run dev` command from the `tweeter-vue` directory. The app will be served at <http://localhost:5173/>.
+2. Start the app using the `npm run dev` command and navigate to <http://localhost:5173/>.

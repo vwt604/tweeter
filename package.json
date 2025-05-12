@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/index.js",
-    "local": "./node_modules/.bin/nodemon --watch server -e js server/index.js"
+    "local": "./node_modules/.bin/nodemon --watch server -e js server/index.js",
+    "dev": "concurrently \"npm run local\" \"npm --prefix app run dev\""
   },
   "author": "Lighthouse Labs",
   "license": "ISC",
@@ -18,6 +19,7 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
+    "concurrently": "^9.1.2",
     "nodemon": "^1.9.2"
   }
 }

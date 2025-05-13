@@ -25,7 +25,7 @@ const tweetText = ref<string>('')
 const showComposer = ref<boolean>(false)
 
 const user = {
-  name: 'Yeung Money',
+  name: 'Tina Tweeter',
   image: '/assets/images/profile-hex.png',
 }
 

@@ -7,85 +7,24 @@ function toggleForm() {
 </script>
 
 <template>
-  <header class="header">
-    <div class="header-content container">
-       <div class=header-left>
-       </div>
-       <div class ="header-mid">
-         <div class="header-logo">
-           Tweeter
-         </div>
-       </div>
-       <div class="header-right">
-         <button class="header-btn" @click="toggleForm">
-           <div class="header-text">
-             <strong>Write</strong> a new tweet 
-           </div>
-           <div class="header-arrow">&#8964</div>
-         </button>
-       </div>
+  <header class="sticky top-0 z-50 bg-[var(--accent)] text-white">
+    <div class="max-w-5xl mx-auto flex justify-between items-center py-3 px-4">
+      <div class="w-1/6"></div>
+      <div class="flex items-center">
+        <!-- TODO: Fix fonts -->
+        <span class="font-cursive text-5xl">Tweeter</span>
       </div>
+      <div class="w-1/6 flex justify-end">
+        <button
+          @click="toggleForm"
+          type="button"
+          class="flex flex-col items-center p-2 bg-transparent border border-transparent outline-none rounded hover:border hover:border-dashed hover:border-white"
+          aria-label="Write a new tweet"
+        >
+          <span class="font-semibold"><strong>Write</strong> a new tweet</span>
+          <span class="text-yellow-200 text-2xl">&#8964;</span>
+        </button>
+      </div>
+    </div>
   </header>
 </template>
-
-<style>
-
-.header {
-  min-height: 72px;
-  width: 100%;
-  color: #FFFFFF;
-  background-color: #5f9ea0;
-  position: sticky;
-  top: 0; 
-}
-
-.header-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-}
-
-.header-mid {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 33.33vw;
-  font-family: 'Pacifico', cursive;
-  font-size: 3em;
-}
-
-.header-left {
-  width: 33.33vw;
-}
-
-.header-right {
-  width: 33.33vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-end;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 0.75em;
-  color: #FFFFFF;
-}
-
-.header-btn {
-  background:none;
-  border: none;
-  outline: none;
-  color:#FFFFFF;
-  padding: var(--space-xs) var(--space-sm);
-}
-
-button.header-btn:hover {
-  border: dashed 0.5px;
-  border-radius: var(--border-radius);
-}
-
-.header-arrow {
-  color: #F6E481;
-  font-size: 1.5em;
-}
-
-</style>

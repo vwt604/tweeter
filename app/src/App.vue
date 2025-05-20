@@ -92,9 +92,3 @@ onMounted(loadTweets)
     <Tweets v-else :tweets="tweets" />
   </main>
 </template>
-
-<style scoped>
-main {
-  margin: 0 auto;
-}
-</style>

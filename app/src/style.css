@@ -1,6 +1,12 @@
 @import 'tailwindcss';
 
 :root {
+  --bg-primary: #f4f1ec;
+  --bg-secondary: #5f7ea0
+  --text-primary: #545149;
+  --text-secondary: #ffffff;
+  --accent: #5f9ea0;
+
   --space-xs: 0.5rem;
   --space-sm: 1rem;
   --space-md: 2rem;
@@ -9,7 +15,6 @@
   --max-width: 900px;
 }
 
-/* Flex and grid helpers */
 .flex {
   display: flex;
 }
@@ -90,33 +95,15 @@ body {
   min-height: 100vh;
 }
 
-/* Typography */
-h1,
-h2,
-h3,
-h4 {
-  font-weight: 700;
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
-}
-.text-center {
-  text-align: center;
-}
-.text-muted {
-  color: #888;
-}
 
 /* Buttons */
 button {
-  display: inline-block;
-  padding: 0.5em 1.25em;
-  font-size: 1rem;
   cursor: pointer;
+  color: white;
 }
 
 button:focus-visible {
-  outline: 2px solid #4f46e5;
-  outline-offset: 2px;
+  outline: 1px solid #4f46e5;
 }
 
 button[disabled] {

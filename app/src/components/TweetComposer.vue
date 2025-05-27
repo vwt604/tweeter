@@ -41,7 +41,7 @@ function submitTweet() {
         placeholder="What are you humming about?"
         :value="props.modelValue"
         @input="emit('update:modelValue', $event.target.value)"
-        class="w-full border-b-gray-600 border-b-2 my-3 h-12"
+        class="w-full border-b-gray-600 border-b-2 my-3 h-12 py-2 focus:outline-none"
       ></textarea>
       <div class="flex justify-between mb-3">
         <button type="submit" class="p-2 bg-[var(--bg-secondary)]">

@@ -62,6 +62,5 @@ article:hover img.icon {
 h3,
 img.icon {
   opacity: 0;
-  color: #545149;
 }
 </style>

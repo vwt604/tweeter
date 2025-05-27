@@ -2,7 +2,7 @@
 
 :root {
   --bg-primary: #f4f1ec;
-  --bg-secondary: #5f7ea0
+  --bg-secondary: #5f7ea0;
   --text-primary: #545149;
   --text-secondary: #ffffff;
   --accent: #5f9ea0;
@@ -34,7 +34,6 @@ body {
   margin: 0;
   min-height: 100vh;
 }
-
 
 /* Buttons */
 button {

@@ -22,31 +22,32 @@ function formatDate(timestamp: number): string {
 
 <template>
   <section>
-    <article v-for="tweet in tweets" class="tweet container">
-      <header class="tweet-header">
-        <div class="tweet-header-left">
+    <article
+      v-for="tweet in tweets"
+      class="bg-white border-gray-600 border-3 mb-4 hover:shadow-md"
+    >
+      <header class="flex justify-between p-4 items-center">
+        <div class="flex gap-3 items-center">
           <img
-            class="logo"
+            class="w-12 h-12"
             :src="tweet.user.avatars"
             :alt="`${tweet.user.name}'s avatar`"
           />
-          <h2 class="full-name">{{ tweet.user.name }}</h2>
+          <h2 class="font-semibold text-lg">{{ tweet.user.name }}</h2>
         </div>
-        <div class="tweet-header-right">
-          <h3 class="user-handle">{{ tweet.user.handle }}</h3>
-        </div>
+        <h3>{{ tweet.user.handle }}</h3>
       </header>
-      <p class="tweet-content">{{ tweet.content.text }}</p>
-      <footer class="tweet-footer">
-        <div class="tweet-footer-left">
-          <p class="date-stamp">
-            {{ formatDate(tweet.created_at) }}
-          </p>
-        </div>
-        <div class="tweet-footer-right">
-          <img class="icon" src="../assets/images/love.png" />
-          <img class="icon" src="../assets/images/retweet.png" />
-          <img class="icon" src="../assets/images/flag.png" />
+      <p class="p-4 mb-6">{{ tweet.content.text }}</p>
+      <footer
+        class="flex justify-between bg-orange-50 p-4 text-xs uppercase tracking-widest"
+      >
+        <p class="date-stamp">
+          {{ formatDate(tweet.created_at) }}
+        </p>
+        <div class="flex gap-3">
+          <img class="icon w-3.5 h-3.5" src="../assets/images/love.png" />
+          <img class="icon w-3.5 h-3.5" src="../assets/images/retweet.png" />
+          <img class="icon w-3.5 h-3.5" src="../assets/images/flag.png" />
         </div>
       </footer>
     </article>
@@ -54,45 +55,6 @@ function formatDate(timestamp: number): string {
 </template>
 
 <style scoped>
-article {
-  border: 3px solid #545149;
-  background-color: #ffffff;
-  overflow-wrap: break-word;
-  min-width: 260px;
-  margin-bottom: var(--space-sm);
-}
-
-.tweet-header {
-  height: 70px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-}
-
-.tweet-header-left {
-  display: flex;
-}
-
-.full-name {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.5em;
-  font-weight: 700;
-  margin: 5px 80px 0 0;
-  width: 60%;
-}
-
-.logo {
-  border-radius: 5px;
-  height: 50px;
-  margin: 10px;
-  max-height: 100%;
-  max-width: 100%;
-  width: 50px;
-}
-
 article:hover h3,
 article:hover img.icon {
   opacity: 1;
@@ -104,33 +66,8 @@ article:hover {
   box-shadow: 5px 5px 5px lightgrey;
 }
 
-h3 {
-  opacity: 0;
-  color: #545149;
-}
-
-.tweet-content {
-  margin: 30px 0;
-  padding: 0 30px;
-}
-
-.tweet-footer {
-  height: 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 30px;
-  border-top: 3px solid #545149;
-  font-size: 0.6em;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  background-color: #fff3e0;
-}
-
-.icon {
-  height: 16px;
-  width: 16px;
-  margin: 5px;
+h3,
+img.icon {
   opacity: 0;
   color: #545149;
 }

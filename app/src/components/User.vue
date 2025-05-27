@@ -9,7 +9,7 @@ defineProps<{
 
 <template>
   <section class="flex bg-[var(--bg-secondary)] p-6">
-    <div class="max-w-5xl mx-auto flex flex-col gap-2 items-center text-center">
+    <div class="container mx-auto flex flex-col gap-2 items-center text-center">
       <img
         class="w-32 h-32"
         :src="user.image"

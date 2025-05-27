@@ -38,10 +38,8 @@ function formatDate(timestamp: number): string {
         <h3>{{ tweet.user.handle }}</h3>
       </header>
       <p class="p-4 mb-6">{{ tweet.content.text }}</p>
-      <footer
-        class="flex justify-between bg-orange-50 p-4 text-xs uppercase tracking-widest"
-      >
-        <p class="date-stamp">
+      <footer class="flex justify-between bg-orange-50 p-4">
+        <p class="text-xs uppercase tracking-widest">
           {{ formatDate(tweet.created_at) }}
         </p>
         <div class="flex gap-3">
@@ -58,12 +56,7 @@ function formatDate(timestamp: number): string {
 article:hover h3,
 article:hover img.icon {
   opacity: 1;
-  font-size: 1em;
   transition: opacity 0.3s ease-in-out;
-}
-
-article:hover {
-  box-shadow: 5px 5px 5px lightgrey;
 }
 
 h3,

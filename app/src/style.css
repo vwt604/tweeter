@@ -8,34 +8,29 @@
   --accent: #5f9ea0;
 }
 
-/* Layout */
+@layer base {
+  body {
+    font-family: 'Source Sans Pro', sans-serif;
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+  }
 
-body {
-  font-family: 'Source Sans Pro', sans-serif;
-  color: var(--text-primary);
-  background-color: var(--bg-primary);
-}
+  section {
+    padding: 2rem 1rem;
+  }
 
-section {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-}
+  /* Buttons */
+  button {
+    cursor: pointer;
+    color: white;
+  }
 
-/* .container {
-  max-width: 1240px;
-} */
+  button:focus-visible {
+    outline: 1px solid #4f46e5;
+  }
 
-/* Buttons */
-button {
-  cursor: pointer;
-  color: white;
-}
-
-button:focus-visible {
-  outline: 1px solid #4f46e5;
-}
-
-button[disabled] {
-  opacity: 0.6;
-  cursor: not-allowed;
+  button[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
 }

@@ -21,7 +21,7 @@ function formatDate(timestamp: number): string {
 </script>
 
 <template>
-  <section class="container mx-auto">
+  <section class="container mx-auto max-w-5xl">
     <article
       v-for="tweet in tweets"
       class="bg-white border-gray-600 border-3 mb-6 hover:shadow-md"

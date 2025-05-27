@@ -21,10 +21,10 @@ function formatDate(timestamp: number): string {
 </script>
 
 <template>
-  <section>
+  <section class="container mx-auto">
     <article
       v-for="tweet in tweets"
-      class="max-w-5xl mx-auto bg-white border-gray-600 border-3 mb-6 hover:shadow-md"
+      class="bg-white border-gray-600 border-3 mb-6 hover:shadow-md"
     >
       <header class="flex justify-between p-4 items-center">
         <div class="flex gap-3 items-center">

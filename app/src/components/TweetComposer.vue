@@ -31,7 +31,7 @@ function submitTweet() {
 </script>
 
 <template>
-  <section class="max-w-5xl mx-auto">
+  <section class="container mx-auto">
     <h2 class="text-2xl font-semibold">Compose Tweet</h2>
     <form @submit.prevent="submitTweet">
       <textarea
